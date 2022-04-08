@@ -1,0 +1,17 @@
+parameters:
+  - name: settings
+    type: object
+  - name: resources
+    type: object
+
+jobs:
+  
+  - ${{ each resource in parameters.resources }}:  
+
+    - ${{ if eq(resource.enabled, 'true') }}:
+
+      - ${{ if eq(resource.type, 'appConfiguration') }}:
+        - template: src/definitions/cloud/azure/appConfiguration/jobs/appConfig-build-jobs.yml
+          parameters:
+            settings: ${{ parameters.settings }}
+            resources: ${{ parameters.resources }}
