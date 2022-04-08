@@ -1,6 +1,8 @@
 parameters:
   - name: settings
     type: object
+  - name: resources
+    type: object
 
 jobs:
   - job: keyVaultBuildJob
