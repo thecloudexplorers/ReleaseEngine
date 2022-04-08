@@ -1,3 +1,11 @@
+resources:
+  repositories:
+  - repository: ReleaseEngine
+    type: github
+    endpoint: thecloudexplorers
+    name: thecloudexplorers/ReleaseEngine
+    ref: refs/heads/feature/initialStructure
+
 trigger:
   branches:
     include:
@@ -8,7 +16,7 @@ pool:
   # name: default
 
 extends: 
-  template: src/gitflow-main.yml
+  template: src/gitflow-main.yml@ReleaseEngine
   parameters:
     settings:
       build:
