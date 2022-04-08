@@ -9,6 +9,9 @@ steps:
   - checkout: ReleaseEngine
 
   - powershell: |
+      Get-ChildItem $(Build.SourcesDirectory) -Recurse
+
+  - powershell: |
 
       if(Test-Path "$(Build.SourcesDirectory)/$(releaseEngineRepositoryName)"){
         $sourceDirectory = "$(Build.SourcesDirectory)/$(releaseEngineRepositoryName)"
