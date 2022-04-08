@@ -7,7 +7,7 @@ jobs:
     displayName: Key Vault Build Job
     steps:
 
-      - template: src/definitions/cloud/azure/_bicep/tasks/bicep-build-tasks.yml
+      - template: /src/definitions/cloud/azure/_bicep/tasks/bicep-build-tasks.yml
         parameters:
           resourceType: ${{ parameters.resource.type }}
 
