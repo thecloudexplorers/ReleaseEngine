@@ -12,8 +12,8 @@ trigger:
     - feature/*
       
 pool:
-  vmImage: 'windows-latest'
-  # name: default
+  # vmImage: 'windows-latest'
+  name: default
 
 extends: 
   template: src/gitflow-main.yml@ReleaseEngine
