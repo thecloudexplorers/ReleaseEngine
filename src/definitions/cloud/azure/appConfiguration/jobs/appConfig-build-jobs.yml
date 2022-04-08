@@ -1,7 +1,7 @@
 parameters:
   - name: settings
     type: object
-  - name: resources
+  - name: resource
     type: object
 
 jobs:

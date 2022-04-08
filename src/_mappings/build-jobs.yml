@@ -14,4 +14,4 @@ jobs:
         - template: /src/definitions/cloud/azure/appConfiguration/jobs/appConfig-build-jobs.yml
           parameters:
             settings: ${{ parameters.settings }}
-            resources: ${{ parameters.resources }}
+            resource: ${{ resource }}
