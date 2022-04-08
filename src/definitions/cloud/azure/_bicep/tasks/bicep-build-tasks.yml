@@ -31,7 +31,7 @@ steps:
       Get-ChildItem $(build.artifactstagingdirectory)/$env:outDir
     displayName: 'Build bicep artifact' 
     env:
-      bicepFilePath: /src/cloud/azure/${{ parameters.resourceType }}/${{ parameters.resourceType }}.bicep
+      bicepFilePath: /src/definitions/cloud/azure/${{ parameters.resourceType }}/${{ parameters.resourceType }}.bicep
       outDir: ${{ parameters.outDir }}
 
       
