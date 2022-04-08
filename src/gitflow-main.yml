@@ -7,7 +7,7 @@ parameters:
 variables:
   - name: serviceConnection
     value: ServiceConnection
-  - template: config/config.yml
+  - template: src/_config/config.yml
 
 stages:
 
