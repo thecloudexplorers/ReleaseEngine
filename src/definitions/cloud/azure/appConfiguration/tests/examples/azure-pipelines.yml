@@ -22,7 +22,7 @@ extends:
       build:
         enabled: true
       deploy:
-        enabled: false
+        enabled: true
         variablesDirectory: src/definitions/cloud/azure/appConfiguration/tests/examples/variables
         infrastructure:
           enabled: true
@@ -49,4 +49,4 @@ extends:
             enabled: true
             servicePlanName: $(appConfigurationName)
           application:
-            enabled: false
+            enabled: true
