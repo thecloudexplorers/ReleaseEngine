@@ -5,7 +5,7 @@ parameters:
     type: object
 
 jobs:
-  - job: appConfigurationBuildJob
+  - job: ${{ parameters.resource.jobName }}_Build
     displayName: App Configuration Build Job
     steps:
 
@@ -16,5 +16,5 @@ jobs:
       - task: PublishPipelineArtifact@1
         inputs:
           targetPath: '$(build.artifactstagingdirectory)'
-          artifact: keyVault
+          artifact: appConfiguration
           publishLocation: 'pipeline'

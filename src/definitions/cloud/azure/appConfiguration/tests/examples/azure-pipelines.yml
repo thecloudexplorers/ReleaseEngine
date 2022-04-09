@@ -44,6 +44,7 @@ extends:
 
       - name: $(resourceGroupName)
         type: resourceGroup
+        jobName: resourceGroup
         enabled: true
         deploy:
           infrastructure:
@@ -52,6 +53,8 @@ extends:
       - name: $(appConfigurationName)
         type: appConfiguration
         enabled: true
+        jobName: appConfiguration
+        dependsOn: resourceGroup
         deploy:
           infrastructure:
             enabled: true

@@ -8,9 +8,10 @@ parameters:
 
 
 jobs:
-  - deployment: 
+  - deployment: ${{ parameters.resource.jobName }}
     displayName: Azure App Configuration Deployment
     environment: ${{ parameters.environment }}
+    dependsOn: ${{ parameters.resource.dependsOn }}
     strategy:
       runOnce:
         deploy:
