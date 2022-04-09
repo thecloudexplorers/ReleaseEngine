@@ -1,2 +1,3 @@
 variables:
   appConfigurationName: jun-ganimedes-dev-appcs001
+  resourceGroupName: jun-ganimedes-dev-rg001-appcs001
