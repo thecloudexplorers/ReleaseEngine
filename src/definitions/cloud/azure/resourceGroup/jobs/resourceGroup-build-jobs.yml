@@ -5,7 +5,7 @@ parameters:
     type: object
 
 jobs:
-  - job: ${{ parameters.resource.name }}BuildJob
+  - job: appConfigurationBuildJob
     displayName: Resource Group Build Job
     steps:
 
