@@ -1,5 +1,3 @@
 variables:
-  subscriptionId: 337ba254-3aa0-4551-ba8e-89debefaa373
-  
   appConfigurationName: jun-ganimedes-dev-appcs001
   resourceGroupName: jun-ganimedes-dev-rg001-appcs001

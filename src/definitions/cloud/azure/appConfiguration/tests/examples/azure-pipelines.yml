@@ -49,15 +49,3 @@ extends:
         deploy:
           infrastructure:
             enabled: true
-
-      - name: $(appConfigurationName)
-        type: appConfiguration
-        enabled: true
-        jobName: appConfiguration
-        dependsOn: resourceGroup
-        deploy:
-          infrastructure:
-            enabled: true
-            servicePlanName: $(appConfigurationName)
-          application:
-            enabled: true
