@@ -5,8 +5,8 @@ parameters:
     type: object
 
 jobs:
-  - job: keyVaultBuildJob
-    displayName: Key Vault Build Job
+  - job:  ${{ parameters.resource.name }}BuildJob
+    displayName: App Configuration Build Job
     steps:
 
       - template: /src/definitions/cloud/azure/_bicep/tasks/bicep-build-tasks.yml
