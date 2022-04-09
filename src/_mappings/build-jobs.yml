@@ -15,3 +15,10 @@ jobs:
           parameters:
             settings: ${{ parameters.settings }}
             resource: ${{ resource }}
+
+      - ${{ if eq(resource.type, 'resourceGroup') }}:
+        - template: /src/definitions/cloud/azure/resourceGroup/jobs/resourceGroup-build-jobs.yml
+          parameters:
+            settings: ${{ parameters.settings }}
+            resource: ${{ resource }}
+

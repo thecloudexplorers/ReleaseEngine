@@ -41,6 +41,14 @@ extends:
         # - uat
         # - prd
     resources:
+
+      - name: $(resourceGroupName)
+        type: resourceGroup
+        enabled: true
+        deploy:
+          infrastructure:
+            enabled: true
+
       - name: $(appConfigurationName)
         type: appConfiguration
         enabled: true
