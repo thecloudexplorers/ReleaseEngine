@@ -31,6 +31,7 @@ jobs:
           - template: /src/definitions/cloud/azure/iac/terraform/jobs/terraform-deploy-jobs.yml
             parameters:
               settings: ${{ parameters.settings }}
+              environment: ${{ parameters.environment }}
               resource: ${{ resource }}
               # iacSettings: 
               #   templatesDirectory: src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
