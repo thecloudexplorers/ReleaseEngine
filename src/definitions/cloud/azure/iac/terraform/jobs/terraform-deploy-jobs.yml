@@ -1,0 +1,28 @@
+parameters:
+- name: settings
+  type: object
+- name: resource
+  type: object  
+- name: environment
+  type: string
+
+jobs:
+  - deployment: ${{ parameters.resource.jobName }}
+    displayName: Azure Resource Group Deployment
+    environment: ${{ parameters.environment }}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            
+            - powershell: |
+                Write-Host "##[command]Running Terraform Init"
+                terraform init -backend=false -input=false
+              workingDirectory: $(Pipeline.Workspace)
+              displayName: Terraform init
+              
+            - powershell: |
+                Write-Host "##[command]Running Terraform Init"
+                terraform plan
+              workingDirectory: $(Pipeline.Workspace)
+              displayName: Terraform plan              
