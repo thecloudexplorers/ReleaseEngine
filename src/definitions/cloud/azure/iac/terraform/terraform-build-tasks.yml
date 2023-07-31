@@ -33,7 +33,7 @@ steps:
     displayName: Terraform format
 
   - powershell: |
-      Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)/$env:outDir"
+      Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)"
     workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
     displayName: Copying terraform files
     env:

@@ -20,11 +20,11 @@ jobs:
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
                 terraform init -backend=false -input=false
-              workingDirectory: $(Pipeline.Workspace)
+              workingDirectory: $(Pipeline.Workspace)/terraform
               displayName: Terraform init
               
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
                 terraform plan
-              workingDirectory: $(Pipeline.Workspace)
+              workingDirectory: $(Pipeline.Workspace)/terraform
               displayName: Terraform plan              
