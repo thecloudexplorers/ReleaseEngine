@@ -16,11 +16,16 @@ stages:
     - stage: build
       
       jobs:
+        - job:
+          steps:
+            - powershell: |
+                terraform init -backend=false -input=false
+              workingDirectory: /src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
         
-        - template: /src/_mappings/build-jobs.yml
-          parameters:
-            settings: ${{ parameters.settings }}
-            resources: ${{ parameters.resources }}
+        # - template: /src/_mappings/build-jobs.yml
+        #   parameters:
+        #     settings: ${{ parameters.settings }}
+        #     resources: ${{ parameters.resources }}
 
   - ${{ if eq(parameters.settings.deploy.enabled, 'true') }}:
     - ${{ each env in parameters.settings.environments }}:
