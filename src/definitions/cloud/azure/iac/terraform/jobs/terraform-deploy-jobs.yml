@@ -14,7 +14,9 @@ jobs:
       runOnce:
         deploy:
           steps:
-            
+            - powershell: |
+                Get-ChildItem $(Pipeline.Workspace) -Recurse
+
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
                 terraform init -backend=false -input=false
