@@ -8,7 +8,7 @@ parameters:
 
 jobs:
   - deployment: ${{ parameters.resource.jobName }}
-    displayName: Azure Resource Group Deployment
+    displayName: Terraform Deployment
     environment: ${{ parameters.environment }}
     strategy:
       runOnce:
