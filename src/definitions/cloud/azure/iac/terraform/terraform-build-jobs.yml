@@ -6,7 +6,7 @@ parameters:
 
 jobs:
   - job: ${{ parameters.resource.jobName }}_Build
-    displayName: Resource Group Build Job
+    displayName: Terraform Build Job
     steps:
 
       - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-tasks.yml
@@ -16,5 +16,5 @@ jobs:
       - task: PublishPipelineArtifact@1
         inputs:
           targetPath: '$(build.artifactstagingdirectory)'
-          artifact: resourceGroup
+          artifact: terraform
           publishLocation: 'pipeline'
