@@ -41,13 +41,6 @@ extends:
         # - uat
         # - prd
     resources:
-      # - name: $(resourceGroupName)
-      #   type: resourceGroup
-      #   jobName: resourceGroup
-      #   enabled: true
-      #   deploy:
-      #     infrastructure:
-      #       enabled: true
 
       - name: networkHub
         type: terraform

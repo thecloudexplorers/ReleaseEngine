@@ -13,7 +13,7 @@ steps:
 
   - powershell: |
       terraform init -backend=false -input=false
-    workingDirectory: /src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    workingDirectory: $(System.DefaultWorkingDirectory)/../src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
 
   # - powershell: |
 
