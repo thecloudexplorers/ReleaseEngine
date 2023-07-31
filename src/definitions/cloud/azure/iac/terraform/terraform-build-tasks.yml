@@ -22,18 +22,19 @@ steps:
   - powershell: |
       Write-Host "##[command]Running Terraform Validate"
       terraform validate
-    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
+
     displayName: Terraform validate  
 
   - powershell: |
       Write-Host "##[command]Check Terraform Format"
       terraform fmt -diff -check -recursive -write=false
-    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
     displayName: Terraform format
 
   - powershell: |
       Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)/$env:outDir"
-    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
     displayName: Copying terraform files
     env:
       outDir: ${{ parameters.outDir }}
