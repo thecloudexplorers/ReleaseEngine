@@ -27,8 +27,8 @@ jobs:
           parameters:
             settings: ${{ parameters.settings }}
             resource: ${{ resource }}
-      
-      steps:
-        - powershell: |
-            terraform init -backend=false -input=false
-          workingDirectory: /src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    
+    steps:
+      - powershell: |
+          terraform init -backend=false -input=false
+        workingDirectory: /src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
