@@ -7,28 +7,28 @@ parameters:
 jobs:
   
   - ${{ each resource in parameters.resources }}:  
-
-    - ${{ if eq(resource.enabled, 'true') }}:
-
-      - ${{ if eq(resource.type, 'appConfiguration') }}:
-        - template: /src/definitions/cloud/azure/appConfiguration/jobs/appConfiguration-build-jobs.yml
-          parameters:
-            settings: ${{ parameters.settings }}
-            resource: ${{ resource }}
-
-      - ${{ if eq(resource.type, 'resourceGroup') }}:
-        - template: /src/definitions/cloud/azure/resourceGroup/jobs/resourceGroup-build-jobs.yml
-          parameters:
-            settings: ${{ parameters.settings }}
-            resource: ${{ resource }}
-
-      - ${{ if eq(resource.type, 'terraform') }}:
-        - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
-          parameters:
-            settings: ${{ parameters.settings }}
-            resource: ${{ resource }}
-    
     steps:
       - powershell: |
           terraform init -backend=false -input=false
         workingDirectory: /src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+        
+    # - ${{ if eq(resource.enabled, 'true') }}:
+
+    #   - ${{ if eq(resource.type, 'appConfiguration') }}:
+    #     - template: /src/definitions/cloud/azure/appConfiguration/jobs/appConfiguration-build-jobs.yml
+    #       parameters:
+    #         settings: ${{ parameters.settings }}
+    #         resource: ${{ resource }}
+
+    #   - ${{ if eq(resource.type, 'resourceGroup') }}:
+    #     - template: /src/definitions/cloud/azure/resourceGroup/jobs/resourceGroup-build-jobs.yml
+    #       parameters:
+    #         settings: ${{ parameters.settings }}
+    #         resource: ${{ resource }}
+
+    #   - ${{ if eq(resource.type, 'terraform') }}:
+    #     - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
+    #       parameters:
+    #         settings: ${{ parameters.settings }}
+    #         resource: ${{ resource }}
+    
