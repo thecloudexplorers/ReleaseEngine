@@ -8,7 +8,7 @@ jobs:
   
   - ${{ each resource in parameters.resources }}:  
 
-    - ${{ if eq(resource.enabled, 'true') }}:
+    # - ${{ if eq(resource.enabled, 'true') }}:
 
       - ${{ if eq(resource.type, 'appConfiguration') }}:
         - template: /src/definitions/cloud/azure/appConfiguration/jobs/appConfiguration-build-jobs.yml
