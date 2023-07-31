@@ -43,7 +43,7 @@ extends:
     resources:
 
       - name: networkHub
-        type: terraform
+        type: networkHub
         jobName: terraform
         enabled: true
         deploy:

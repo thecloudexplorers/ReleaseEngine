@@ -3,6 +3,8 @@ parameters:
     type: object
   - name: resource
     type: object
+  - name: iacSettings
+    type: object    
 
 jobs:
   - job: ${{ parameters.resource.jobName }}_Build
@@ -12,6 +14,7 @@ jobs:
       - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-tasks.yml
         parameters:
           resourceType: ${{ parameters.resource.type }}
+          iacSettings: ${{ parameters.iacSettings }}
 
       - task: PublishPipelineArtifact@1
         inputs:

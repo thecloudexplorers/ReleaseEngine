@@ -4,6 +4,8 @@ parameters:
   - name: outDir
     type: string
     default: infrastructure
+  - name: iacSettings
+    type: object
 
 steps:
   - checkout: ReleaseEngine
@@ -14,7 +16,7 @@ steps:
   - powershell: |
       Write-Host "##[command]Running Terraform Init"
       terraform init -backend=false -input=false
-    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
     displayName: Terraform init
 
   - powershell: |
