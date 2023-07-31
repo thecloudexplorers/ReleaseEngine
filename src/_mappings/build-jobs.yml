@@ -23,7 +23,8 @@ jobs:
             resource: ${{ resource }}
 
       - ${{ if eq(resource.type, 'terraform') }}:
-        - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
+        - template: /src/definitions/cloud/azure/resourceGroup/jobs/resourceGroup-build-jobs.yml
+        # - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
           parameters:
             settings: ${{ parameters.settings }}
             resource: ${{ resource }}
