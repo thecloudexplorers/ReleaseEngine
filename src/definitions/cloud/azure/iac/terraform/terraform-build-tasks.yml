@@ -13,7 +13,8 @@ steps:
 
   - powershell: |
       terraform init -backend=false -input=false
-    workingDirectory: $(System.DefaultWorkingDirectory)/../src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    
 
   # - powershell: |
 
