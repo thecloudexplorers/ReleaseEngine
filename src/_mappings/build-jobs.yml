@@ -29,7 +29,7 @@ jobs:
               settings: ${{ parameters.settings }}
               resource: ${{ resource }}
               iacSettings: 
-                templatesDirectory: /src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+                templatesDirectory: src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
 
         # - ${{ if eq(resource.deploy.infrastructure.type, 'bicep') }}:
         # - ${{ if eq(resource.deploy.infrastructure.type, 'powershell') }}:
