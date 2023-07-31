@@ -4,7 +4,7 @@ resources:
     type: github
     endpoint: thecloudexplorers
     name: thecloudexplorers/ReleaseEngine
-    ref: refs/heads/feature/initialStructure
+    ref: refs/heads/feature/terraformImplementation
 
 trigger:
   branches:

@@ -16,15 +16,11 @@ stages:
     - stage: build
       
       jobs:
-        - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
+        
+        - template: /src/_mappings/build-jobs.yml
           parameters:
             settings: ${{ parameters.settings }}
             resources: ${{ parameters.resources }}
-        
-        # - template: /src/_mappings/build-jobs.yml
-        #   parameters:
-        #     settings: ${{ parameters.settings }}
-        #     resources: ${{ parameters.resources }}
 
   - ${{ if eq(parameters.settings.deploy.enabled, 'true') }}:
     - ${{ each env in parameters.settings.environments }}:
