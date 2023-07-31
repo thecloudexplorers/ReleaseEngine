@@ -9,7 +9,7 @@ resources:
 trigger:
   branches:
     include:
-    - feature/*
+    - main
       
 pool:
   # vmImage: 'windows-latest'
