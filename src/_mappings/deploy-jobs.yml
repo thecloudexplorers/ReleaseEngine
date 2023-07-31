@@ -24,4 +24,11 @@ jobs:
           parameters:
             settings: ${{ parameters.settings }}                  
             environment: ${{ parameters.environment }}
-            resource: ${{ resource }}            
+            resource: ${{ resource }}
+      
+      - ${{ if eq(resource.type, 'terraform') }}:
+        - template: /src/definitions/cloud/azure/resourceGroup/jobs/resourceGroup-deploy-jobs.yml
+          parameters:
+            settings: ${{ parameters.settings }}                  
+            environment: ${{ parameters.environment }}
+            resource: ${{ resource }}                 
