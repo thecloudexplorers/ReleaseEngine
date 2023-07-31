@@ -12,9 +12,27 @@ steps:
       Get-ChildItem $(Build.SourcesDirectory) -Recurse
 
   - powershell: |
+      Write-Host "##[command]Running Terraform Init"
       terraform init -backend=false -input=false
     workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
-    
+    displayName: Terraform init
+
+  - powershell: |
+      Write-Host "##[command]Running Terraform Validate"
+      terraform validate
+    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    displayName: Terraform validate  
+
+  - powershell: |
+      Write-Host "##[command]Check Terraform Format"
+      terraform fmt -diff -check -recursive -write=false
+    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    displayName: Terraform format
+
+  - powershell: |
+      Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)"
+    workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
+    displayName: Copying terraform files
 
   # - powershell: |
 
