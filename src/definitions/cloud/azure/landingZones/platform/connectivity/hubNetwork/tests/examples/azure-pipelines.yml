@@ -41,11 +41,19 @@ extends:
         # - uat
         # - prd
     resources:
+      # - name: networkHub
+      #   type: terraform
+      #   enabled: true
+      #   deploy:
+      #     infrastructure:
+      #       enabled: true           
+      #     application:
+      #       enabled: false
+
       - name: networkHub
         type: terraform
+        jobName: terraform
         enabled: true
         deploy:
           infrastructure:
-            enabled: true           
-          application:
-            enabled: false
+            enabled: true            
