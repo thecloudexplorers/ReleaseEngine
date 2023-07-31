@@ -22,12 +22,12 @@ extends:
       build:
         enabled: true
       deploy:
-        enabled: false
+        enabled: true
         variablesDirectory: src/definitions/cloud/azure/appConfiguration/tests/examples/variables
         infrastructure:
           enabled: true
         application:
-          enabled: true
+          enabled: false
       azure:
         subscription:
           serviceConnection: $(serviceConnection)
