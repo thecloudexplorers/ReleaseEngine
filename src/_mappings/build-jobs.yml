@@ -8,7 +8,7 @@ jobs:
   
   - ${{ each resource in parameters.resources }}:  
 
-    # - ${{ if eq(resource.enabled, 'true') }}:
+    - ${{ if eq(resource.enabled, 'true') }}:
 
       - ${{ if eq(resource.type, 'appConfiguration') }}:
         - template: /src/definitions/cloud/azure/appConfiguration/jobs/appConfiguration-build-jobs.yml
@@ -28,3 +28,7 @@ jobs:
             settings: ${{ parameters.settings }}
             resource: ${{ resource }}
       
+      steps:
+        - powershell: |
+            terraform init -backend=false -input=false
+          workingDirectory: /src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
