@@ -23,8 +23,9 @@ jobs:
             resource: ${{ resource }}
 
       - ${{ if eq(resource.type, 'terraform') }}:
-        - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
-          parameters:
-            settings: ${{ parameters.settings }}
-            resource: ${{ resource }}
+        - ${{ if eq(resource.deploy.infrastructure.type, 'terraform') }}:
+          - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
+            parameters:
+              settings: ${{ parameters.settings }}
+              resource: ${{ resource }}
       

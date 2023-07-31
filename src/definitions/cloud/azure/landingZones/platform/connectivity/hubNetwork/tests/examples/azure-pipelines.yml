@@ -48,4 +48,5 @@ extends:
         enabled: true
         deploy:
           infrastructure:
-            enabled: true            
+            enabled: true
+            type: terraform

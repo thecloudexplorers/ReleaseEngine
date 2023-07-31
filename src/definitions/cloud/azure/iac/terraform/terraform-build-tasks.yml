@@ -30,9 +30,11 @@ steps:
     displayName: Terraform format
 
   - powershell: |
-      Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)"
+      Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)/$env:outDir"
     workingDirectory: $(Pipeline.Workspace)/s/src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
     displayName: Copying terraform files
+    env:
+      outDir: ${{ parameters.outDir }}
 
   # - powershell: |
 
