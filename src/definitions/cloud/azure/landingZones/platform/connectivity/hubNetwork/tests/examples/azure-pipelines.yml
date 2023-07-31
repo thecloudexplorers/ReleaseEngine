@@ -22,7 +22,7 @@ extends:
       build:
         enabled: true
       deploy:
-        enabled: true
+        enabled: false
         variablesDirectory: src/definitions/cloud/azure/appConfiguration/tests/examples/variables
         infrastructure:
           enabled: true
