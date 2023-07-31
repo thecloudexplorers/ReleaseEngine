@@ -11,7 +11,7 @@ variables:
 
 stages:
 
-  - ${{ if eq(parameters.settings.build.enabled, 'true') }}:
+  # - ${{ if eq(parameters.settings.build.enabled, 'true') }}:
     
     - stage: build
       
@@ -27,17 +27,17 @@ stages:
         #     settings: ${{ parameters.settings }}
         #     resources: ${{ parameters.resources }}
 
-  - ${{ if eq(parameters.settings.deploy.enabled, 'true') }}:
-    - ${{ each env in parameters.settings.environments }}:
+  # - ${{ if eq(parameters.settings.deploy.enabled, 'true') }}:
+  #   - ${{ each env in parameters.settings.environments }}:
       
-      - stage: ${{ env }}
+  #     - stage: ${{ env }}
       
-        variables:
-          - template: /${{ parameters.settings.deploy.variablesDirectory }}/${{ env }}-vars.yml@self
+  #       variables:
+  #         - template: /${{ parameters.settings.deploy.variablesDirectory }}/${{ env }}-vars.yml@self
 
-        jobs:
-          - template: /src/_mappings/deploy-jobs.yml
-            parameters:
-              settings: ${{ parameters.settings }}
-              resources: ${{ parameters.resources }}
-              environment: ${{ env }}
+  #       jobs:
+  #         - template: /src/_mappings/deploy-jobs.yml
+  #           parameters:
+  #             settings: ${{ parameters.settings }}
+  #             resources: ${{ parameters.resources }}
+  #             environment: ${{ env }}
