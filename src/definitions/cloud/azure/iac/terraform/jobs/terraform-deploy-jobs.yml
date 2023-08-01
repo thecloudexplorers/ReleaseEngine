@@ -28,3 +28,9 @@ jobs:
                 terraform plan
               workingDirectory: $(Pipeline.Workspace)/terraform
               displayName: Terraform plan              
+
+            - powershell: |
+                Write-Host "##[command]Running Terraform Init"
+                terraform apply -auto-approve
+              workingDirectory: $(Pipeline.Workspace)/terraform
+              displayName: Terraform apply                     
