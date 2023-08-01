@@ -16,5 +16,8 @@ module "vnet" {
 
   use_for_each = "true"
 
+  subnet_names    = var.hubVnet.subnet_names
+  subnet_prefixes = var.hubVnet.subnet_prefixes
+
   tags = var.hubVnet.tags
 }
