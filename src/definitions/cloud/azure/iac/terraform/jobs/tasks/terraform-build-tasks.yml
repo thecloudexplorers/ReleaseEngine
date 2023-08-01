@@ -31,11 +31,6 @@ steps:
       terraform fmt -diff -check -recursive -write=false
     workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
     displayName: Terraform format
-
-  # - powershell: |
-  #     Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)"
-  #   workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
-  #   displayName: Copying terraform definitions
   
   - task: CopyFiles@2
     displayName: Copying terraform definitions  
@@ -47,6 +42,6 @@ steps:
   - task: CopyFiles@2
     displayName: Copying terraform variables  
     inputs:
-      SourceFolder: ${{ parameters.resource.deploy.infrastructure.variables }}
+      SourceFolder: ${{ parameters.resource.deploy.infrastructure.variablesDirectory }}
       contents: '*.tfvars'
       targetFolder: $(build.artifactstagingdirectory)
