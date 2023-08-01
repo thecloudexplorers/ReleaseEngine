@@ -7,6 +7,14 @@ resourceGroup = {
 }
 
 hubVnet = {
+  name          = "vnet-hub"
+  resourceGroup = "rg-connectivity"
+  tags = {
+    workload = "releaseengine"
+  }
+}
+
+spokeVnet = {
   name            = "vnet-spoke"
   address_space   = ["10.1.0.0/16"]
   subnet_names    = ["default"]
@@ -16,4 +24,3 @@ hubVnet = {
     workload = "releaseengine"
   }
 }
-
