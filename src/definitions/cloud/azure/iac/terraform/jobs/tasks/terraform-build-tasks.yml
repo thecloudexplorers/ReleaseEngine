@@ -1,5 +1,5 @@
 parameters:
-  - name: resourceType
+  - name: resource
     type: object
   - name: outDir
     type: string
@@ -35,6 +35,9 @@ steps:
   - powershell: |
       Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)"
     workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
-    displayName: Copying terraform files
-    env:
-      outDir: ${{ parameters.outDir }}
+    displayName: Copying terraform definitions
+
+  - powershell: |
+      Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)/variables"
+    workingDirectory: ${{ parameters.resource.deploy.infrastructure.variables }}
+    displayName: Copying terraform variables  

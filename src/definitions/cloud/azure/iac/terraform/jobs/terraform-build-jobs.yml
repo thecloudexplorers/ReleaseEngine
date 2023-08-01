@@ -13,7 +13,7 @@ jobs:
 
       - template: /src/definitions/cloud/azure/iac/terraform/jobs/tasks/terraform-build-tasks.yml      
         parameters:
-          resourceType: ${{ parameters.resource.type }}
+          resource: ${{ parameters.resource }}
           iacSettings: ${{ parameters.iacSettings }}
 
       - task: PublishPipelineArtifact@1
