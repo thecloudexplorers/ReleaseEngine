@@ -14,8 +14,6 @@ jobs:
       runOnce:
         deploy:
           steps:
-            - powershell: |
-                Get-ChildItem $(Pipeline.Workspace) -Recurse
 
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
@@ -23,10 +21,9 @@ jobs:
               workingDirectory: $(Pipeline.Workspace)/terraform
               displayName: Terraform init
             
-            - ${{ each variableDirectory in parameters.resource.infrastructure.variables }}:
-              - powershell: |
-                  Get-ChildItem -Path "${{ variableDirectory }}\${{ parameters.environment }}-*.tfvars"                
-                displayName: Obtaining variable files
+            - powershell: |
+                Get-ChildItem -Path "${{ parameters.resource.infrastructure.variables }}:\${{ parameters.environment }}-*.tfvars"
+              displayName: Obtaining variable files
               
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
