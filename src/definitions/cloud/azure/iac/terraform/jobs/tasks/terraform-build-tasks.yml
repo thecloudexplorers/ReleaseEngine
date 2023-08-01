@@ -49,4 +49,4 @@ steps:
     inputs:
       SourceFolder: ${{ parameters.resource.deploy.infrastructure.variables }}
       contents: '*.tfvars'
-      targetFolder: $(build.artifactstagingdirectory)/variables 
+      targetFolder: $(build.artifactstagingdirectory)/vars 
