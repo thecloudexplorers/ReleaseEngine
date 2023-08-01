@@ -38,6 +38,6 @@ steps:
     displayName: Copying terraform definitions
 
   - powershell: |
-      Copy-Item "*.tfvars" -Destination "$(build.artifactstagingdirectory)/variables"
+      Copy-Item "*.tfvars" -Destination "$(build.artifactstagingdirectory)/variables/"
     workingDirectory: ${{ parameters.resource.deploy.infrastructure.variables }}
     displayName: Copying terraform variables  
