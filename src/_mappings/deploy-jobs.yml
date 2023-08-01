@@ -26,7 +26,7 @@ jobs:
             environment: ${{ parameters.environment }}
             resource: ${{ resource }}
       
-      - ${{ if eq(resource.type, 'networkHub') }}:
+      - ${{ if eq(resource.type, 'hubNetwork') }}:
         - ${{ if eq(resource.deploy.infrastructure.type, 'terraform') }}:
           - template: /src/definitions/cloud/azure/iac/terraform/jobs/terraform-deploy-jobs.yml
             parameters:

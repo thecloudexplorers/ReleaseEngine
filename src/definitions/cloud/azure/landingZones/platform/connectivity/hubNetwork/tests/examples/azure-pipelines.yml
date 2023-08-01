@@ -45,8 +45,8 @@ extends:
         # - prd
     resources:
 
-      - name: networkHub
-        type: networkHub
+      - name: hubNetwork
+        type: hubNetwork
         jobName: terraform
         enabled: true
         deploy:
