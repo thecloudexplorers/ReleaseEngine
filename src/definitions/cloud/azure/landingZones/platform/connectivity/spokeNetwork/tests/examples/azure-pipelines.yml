@@ -1,0 +1,57 @@
+resources:
+  repositories:
+  - repository: ReleaseEngine
+    type: github
+    endpoint: thecloudexplorers
+    name: thecloudexplorers/ReleaseEngine
+    ref: refs/heads/feature/terraformImplementation
+
+trigger:
+  branches:
+    include:
+    - feature/*
+  paths:
+    include:
+      - src/definitions/cloud/azure/landingZones/platform/connectivity/spokeNetwork
+            
+pool:
+  # vmImage: 'windows-latest'
+  name: default
+
+extends: 
+  template: src/gitflow-main.yml@ReleaseEngine
+  parameters:
+    settings:
+      build:
+        enabled: true
+      deploy:
+        enabled: true
+        variablesDirectory: src/definitions/cloud/azure/appConfiguration/tests/examples/variables
+        infrastructure:
+          enabled: true
+        application:
+          enabled: false
+      azure:
+        subscription:
+          serviceConnection: $(serviceConnection)
+          subscriptionId: $(subscriptionId)
+        resourceGroup:
+          name: $(resourceGroupName)
+          location: $(location)
+          new: true
+      environments:
+        - dev
+        # - uat
+        # - prd
+    resources:
+
+      - name: spokeNetwork
+        type: spokeNetwork
+        jobName: spokeNetwork
+        enabled: true
+        deploy:
+          infrastructure:
+            enabled: true
+            type: terraform
+            variablesDirectory: src/definitions/cloud/azure/landingZones/platform/connectivity/spokeNetwork/tests/examples/variables
+            
