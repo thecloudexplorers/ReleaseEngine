@@ -23,9 +23,9 @@ jobs:
             
             - powershell: |
                 Get-ChildItem -Recurse
-                Get-ChildItem -Path "${{ parameters.resource.infrastructure.variables }}\${{ parameters.environment }}-*.tfvars"
+                Get-ChildItem -Path " $(Pipeline.Workspace)/terraform/variables/${{ parameters.environment }}-*.tfvars"
               displayName: Obtaining variable files
-              workingDirectory: ${{ parameters.resource.infrastructure.variables }}
+              workingDirectory: $(Pipeline.Workspace)/terraform
               
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
@@ -37,4 +37,4 @@ jobs:
                 Write-Host "##[command]Running Terraform Init"
                 terraform apply -auto-approve
               workingDirectory: $(Pipeline.Workspace)/terraform
-              displayName: Terraform apply                     
+              displayName: Terraform apply

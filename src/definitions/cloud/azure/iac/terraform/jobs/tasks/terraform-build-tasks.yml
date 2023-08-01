@@ -43,6 +43,7 @@ steps:
   #   displayName: Copying terraform variables  
 
   - task: CopyFiles@2
+    displayName: Copying terraform variables  
     inputs:
       SourceFolder: ${{ parameters.resource.deploy.infrastructure.variables }}
       contents: '*.tfvars'
