@@ -38,28 +38,3 @@ steps:
     displayName: Copying terraform files
     env:
       outDir: ${{ parameters.outDir }}
-
-  # - powershell: |
-
-  #     if(Test-Path "$(Build.SourcesDirectory)/$(releaseEngineRepositoryName)"){
-  #       $sourceDirectory = "$(Build.SourcesDirectory)/$(releaseEngineRepositoryName)"
-  #     }else{
-  #       $sourceDirectory = "$(Build.SourcesDirectory)"
-  #     }
-
-  #     $file = Join-Path $sourceDirectory $env:bicepFilePath
-
-  #     Write-Host "##[section]Building bicep file: $file"
-
-  #     Write-Host $file
-
-  #     New-Item -ItemType Directory -Force -Path $(build.artifactstagingdirectory)/$env:outDir
-  #     az bicep build --file $file --outdir $(build.artifactstagingdirectory)/$env:outDir
-
-  #     Get-ChildItem $(build.artifactstagingdirectory)/$env:outDir
-  #   displayName: 'Build bicep artifact' 
-  #   env:
-  #     bicepFilePath: /src/definitions/cloud/azure/${{ parameters.resourceType }}/bicep/${{ parameters.resourceType }}-iac.bicep
-  #     outDir: ${{ parameters.outDir }}
-
-      

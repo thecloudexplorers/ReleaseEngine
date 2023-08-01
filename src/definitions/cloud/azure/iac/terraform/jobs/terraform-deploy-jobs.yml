@@ -22,6 +22,11 @@ jobs:
                 terraform init -backend=false -input=false
               workingDirectory: $(Pipeline.Workspace)/terraform
               displayName: Terraform init
+            
+            - ${{ each variableDirectory in parameters.resource.infrastructure.variables }}:
+              - powershell: |
+                  Get-ChildItem -Path "${{ variableDirectory }}\${{ parameters.environment }}-*.tfvars"                
+                displayName: Obtaining variable files
               
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
