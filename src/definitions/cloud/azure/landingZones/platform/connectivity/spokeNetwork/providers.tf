@@ -11,6 +11,10 @@ terraform {
 }
 
 provider "azurerm" {
+  features {}
+}
+
+provider "azurerm" {
   alias           = "hub"
   subscription_id = var.hubVnet.subscription_id
   tenant_id       = var.hubVnet.tenant_id
