@@ -22,8 +22,10 @@ jobs:
               displayName: Terraform init
             
             - powershell: |
+                Get-ChildItem -Recurse
                 Get-ChildItem -Path "${{ parameters.resource.infrastructure.variables }}\${{ parameters.environment }}-*.tfvars"
               displayName: Obtaining variable files
+              workingDirectory: ${{ parameters.resource.infrastructure.variables }}
               
             - powershell: |
                 Write-Host "##[command]Running Terraform Init"
