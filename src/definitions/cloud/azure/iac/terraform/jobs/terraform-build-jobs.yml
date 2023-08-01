@@ -11,7 +11,7 @@ jobs:
     displayName: Terraform Build Job
     steps:
 
-      - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-tasks.yml
+      - template: /src/definitions/cloud/azure/iac/terraform/jobs/tasks/terraform-build-tasks.yml      
         parameters:
           resourceType: ${{ parameters.resource.type }}
           iacSettings: ${{ parameters.iacSettings }}

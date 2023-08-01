@@ -24,7 +24,7 @@ jobs:
 
       - ${{ if eq(resource.type, 'networkHub') }}:
         - ${{ if eq(resource.deploy.infrastructure.type, 'terraform') }}:
-          - template: /src/definitions/cloud/azure/iac/terraform/terraform-build-jobs.yml
+          - template: /src/definitions/cloud/azure/iac/terraform/jobs/terraform-build-jobs.yml
             parameters:
               settings: ${{ parameters.settings }}
               resource: ${{ resource }}
