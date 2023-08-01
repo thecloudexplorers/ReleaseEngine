@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.resourceGroup.tags
 }
 
-module "vnet" {
+module "spokeVnet" {
   depends_on = [azurerm_resource_group.rg]
   source     = "Azure/vnet/azurerm"
   version    = "4.1.0"
@@ -27,13 +27,31 @@ data "azurerm_virtual_network" "hubVnet" {
   resource_group_name = var.hubVnet.resourceGroup
 }
 
-# Creates VNET peerings from Hub vNet to Spoke vNet and also from Spoke vNet to Hub vNet
-module "vnetpeering" {
-  source               = "Azure/vnetpeering/azurerm"
-  vnet_peering_names   = ["vnetpeering1", "vnetpeering2"]
-  vnet_names           = [module.vnet.vnet_name, data.hubVnet.vnet_name]
-  resource_group_names = [var.resourceGroup.name, var.hubVnet.resourceGroup]
+# # Creates VNET peerings from Hub vNet to Spoke vNet and also from Spoke vNet to Hub vNet
+# module "vnetpeering" {
+#   source               = "Azure/vnetpeering/azurerm"
+#   vnet_peering_names   = ["vnetpeering1", "vnetpeering2"]
+#   vnet_names           = [module.vnet.vnet_name, data.hubVnet.vnet_name]
+#   resource_group_names = [var.resourceGroup.name, var.hubVnet.resourceGroup]
 
-  tags = var.spokeVnet.tags
+#   tags = var.spokeVnet.tags
+# }
+
+module "azure_vnet_peering" {
+  source  = "claranet/vnet-peering/azurerm"
+  version = "x.x.x"
+
+  providers = {
+    azurerm.src = azurerm
+    azurerm.dst = azurerm.preprod
+  }
+
+  vnet_src_id  = module.spokeVnet.virtual_network_id
+  vnet_dest_id = data.hubVnet.virtual_network_id
+
+  allow_forwarded_src_traffic  = true
+  allow_forwarded_dest_traffic = true
+
+  allow_virtual_src_network_access  = true
+  allow_virtual_dest_network_access = true
 }
-
