@@ -11,5 +11,18 @@ terraform {
 }
 
 provider "azurerm" {
+  alias           = "hub"
+  subscription_id = var.hubVnet.subscription_id
+  tenant_id       = var.hubVnet.tenant_id
+
   features {}
 }
+
+provider "azurerm" {
+  alias           = "spoke"
+  subscription_id = var.spokeVnet.subscription_id
+  tenant_id       = var.spokeVnet.tenant_id
+
+  features {}
+}
+# https://github.com/claranet/terraform-azurerm-vnet-peering/blob/master/resources.tf
