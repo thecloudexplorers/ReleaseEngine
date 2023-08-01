@@ -10,9 +10,11 @@ module "vnet" {
   version    = "4.1.0"
   # insert the 3 required variables here
 
-  resource_group_name = "rg-connectivity"
-  vnet_location       = "uksouth"
-  vnet_name           = "vnet-hub"
+  resource_group_name = var.resourceGroup.name
+  vnet_location       = var.resourceGroup.location
+  vnet_name           = var.hubVnet.name
 
   use_for_each = "true"
+
+  tags = var.hubVnet.tags
 }

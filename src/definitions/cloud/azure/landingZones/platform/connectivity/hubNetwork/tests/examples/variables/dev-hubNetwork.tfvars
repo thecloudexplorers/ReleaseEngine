@@ -5,3 +5,10 @@ resourceGroup = {
     workload = "releaseengine"
   }
 }
+
+hubVnet = {
+  name = "vnet-hub"
+  tags = {
+    workload = "releaseengine"
+  }
+}
