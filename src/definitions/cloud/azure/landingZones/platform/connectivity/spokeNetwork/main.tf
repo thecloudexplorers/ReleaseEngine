@@ -39,7 +39,7 @@ data "azurerm_virtual_network" "hubVnet" {
 
 module "azure_vnet_peering" {
   source  = "claranet/vnet-peering/azurerm"
-  version = "x.x.x"
+  version = "5.1.0"
 
   providers = {
     azurerm.src = azurerm
