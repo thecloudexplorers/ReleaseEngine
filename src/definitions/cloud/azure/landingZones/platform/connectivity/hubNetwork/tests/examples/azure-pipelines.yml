@@ -50,5 +50,4 @@ extends:
           infrastructure:
             enabled: true
             type: terraform
-            variables:
-              - src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork/tests/examples/variables
+            variables: src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork/tests/examples/variables
