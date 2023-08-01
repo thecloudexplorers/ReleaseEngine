@@ -1,5 +1,5 @@
 resourceGroup = {
-  name     = "vnet-hub"
+  name     = "rg-connectivity"
   location = "uksouth"
   tags = {
     workload = "releaseengine"
