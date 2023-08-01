@@ -9,3 +9,9 @@ variable "spokeVnet" {
   description = "Spoke Network parameter"
   default     = []
 }
+
+variable "hubVnet" {
+  type        = any
+  description = "Hub Network parameter"
+  default     = []
+}
