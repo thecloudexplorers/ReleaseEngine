@@ -32,15 +32,17 @@ steps:
     workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
     displayName: Terraform format
 
-  - powershell: |
-      Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)"
-    workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
-    displayName: Copying terraform definitions
-
   # - powershell: |
-  #     Copy-Item "*.tfvars" -Destination "$(build.artifactstagingdirectory)/variables/"
-  #   workingDirectory: ${{ parameters.resource.deploy.infrastructure.variables }}
-  #   displayName: Copying terraform variables  
+  #     Copy-Item "*.tf" -Destination "$(build.artifactstagingdirectory)"
+  #   workingDirectory: ${{ parameters.iacSettings.templatesDirectory }}
+  #   displayName: Copying terraform definitions
+  
+  - task: CopyFiles@2
+    displayName: Copying terraform definitions  
+    inputs:
+      SourceFolder: ${{ parameters.iacSettings.templatesDirectory }}
+      contents: '*.tf'
+      targetFolder: $(build.artifactstagingdirectory) 
 
   - task: CopyFiles@2
     displayName: Copying terraform variables  
