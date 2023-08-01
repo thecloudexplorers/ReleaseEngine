@@ -4,8 +4,9 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "vnet" {
-  source  = "Azure/vnet/azurerm"
-  version = "4.1.0"
+  depends_on = [azurerm_resource_group.rg]
+  source     = "Azure/vnet/azurerm"
+  version    = "4.1.0"
   # insert the 3 required variables here
 
   resource_group_name = "rg-connectivity"
