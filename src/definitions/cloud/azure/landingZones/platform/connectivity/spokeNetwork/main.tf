@@ -47,7 +47,7 @@ module "azure_vnet_peering" {
   }
 
   vnet_src_id  = module.spokeVnet.vnet_id
-  vnet_dest_id = data.hubVnet.vnet_id
+  vnet_dest_id = data.azurerm_virtual_network.hubVnet.id
 
   allow_forwarded_src_traffic  = true
   allow_forwarded_dest_traffic = true
