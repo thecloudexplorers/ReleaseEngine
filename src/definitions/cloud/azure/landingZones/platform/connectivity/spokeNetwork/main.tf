@@ -31,8 +31,9 @@ data "azurerm_virtual_network" "hubVnet" {
 module "vnetpeering" {
   source               = "Azure/vnetpeering/azurerm"
   vnet_peering_names   = ["vnetpeering1", "vnetpeering2"]
-  vnet_names           = ["${module.vnet.vnet_name}", "${data.hubVnet.vnet_name}"]
-  resource_group_names = ["${var.resourceGroup.name}", "${var.hubVnet.resourceGroup}"]
+  vnet_names           = [module.vnet.vnet_name, data.hubVnet.vnet_name]
+  resource_group_names = [var.resourceGroup.name, var.hubVnet.resourceGroup]
 
   tags = var.spokeVnet.tags
 }
+
