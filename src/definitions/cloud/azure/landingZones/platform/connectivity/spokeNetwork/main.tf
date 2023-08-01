@@ -13,6 +13,7 @@ module "spokeVnet" {
   resource_group_name = var.resourceGroup.name
   vnet_location       = var.resourceGroup.location
   vnet_name           = var.spokeVnet.name
+  address_space       = var.spokeVnet.address_space
 
   use_for_each = "true"
 

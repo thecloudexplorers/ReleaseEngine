@@ -13,6 +13,7 @@ module "vnet" {
   resource_group_name = var.resourceGroup.name
   vnet_location       = var.resourceGroup.location
   vnet_name           = var.hubVnet.name
+  address_space       = var.hubVnet.address_space
 
   use_for_each = "true"
 
