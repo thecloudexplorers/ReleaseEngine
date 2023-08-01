@@ -10,6 +10,9 @@ trigger:
   branches:
     include:
     - feature/*
+  paths:
+     include:
+      - src/definitions/cloud/azure/landingZones/platform/connectivity/hubNetwork
       
 pool:
   # vmImage: 'windows-latest'

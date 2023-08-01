@@ -35,3 +35,11 @@ jobs:
         # - ${{ if eq(resource.deploy.infrastructure.type, 'powershell') }}:
         
       
+      - ${{ if eq(resource.type, 'spokeNetwork') }}:
+        - ${{ if eq(resource.deploy.infrastructure.type, 'terraform') }}:
+          - template: /src/definitions/cloud/azure/iac/terraform/jobs/terraform-build-jobs.yml
+            parameters:
+              settings: ${{ parameters.settings }}
+              resource: ${{ resource }}
+              iacSettings: 
+                templatesDirectory: src/definitions/cloud/azure/landingZones/platform/connectivity/spokeNetwork
