@@ -22,8 +22,8 @@ jobs:
               displayName: Terraform init
             
             - powershell: |
-                Get-ChildItem -Path "$(Pipeline.Workspace)/terraform/vars/${{ parameters.environment }}-*.tfvars" | Rename-Item -NewName { $_.Name -replace '.tfvars','.auto.tfvars' }
-
+                Get-ChildItem -Path "$(Pipeline.Workspace)/terraform/${{ parameters.environment }}-*.tfvars" | Rename-Item -NewName { $_.Name -replace '.tfvars','.auto.tfvars' }
+                Get-ChildItem -Path "$(Pipeline.Workspace)/terraform/"
               displayName: Obtaining variable files
               workingDirectory: $(Pipeline.Workspace)/terraform
               
