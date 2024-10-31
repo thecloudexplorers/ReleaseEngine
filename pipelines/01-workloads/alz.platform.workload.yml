@@ -5,7 +5,7 @@ parameters:
 variables:
   - name: serviceConnection
     value: ServiceConnection
-  - template: ${{ parameters.workloadSettings.configurationFilePath }}@self
+  - template: ${{ parameters.workloadSettings.configurationFilePath }}/metadata.yml@self
 
 stages:
 

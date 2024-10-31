@@ -11,22 +11,18 @@ jobs:
     steps:
       - checkout: self
 
-      # TODO: Move to specific file?
-      # - task: CopyFiles@2
-      #   displayName: Copying Utilities files
-      #   inputs:
-      #     SourceFolder: /utilities
-      #     Contents: |
-      #       **\*
-      #     TargetFolder: $(build.artifactstagingdirectory)/utilities
+      - task: CopyFiles@2
+        displayName: Copying Utilities files
+        inputs:
+          SourceFolder: templates/utilities
+          Contents: **\*
+          TargetFolder: $(build.artifactstagingdirectory)
 
       - task: CopyFiles@2
         displayName: Copying Workload files
         inputs:
           SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload) # tenant-provisioning
-          Contents: |
-            **\*.ps1
-            **\*.ps1
+          Contents: **\*.ps1
           TargetFolder: $(build.artifactstagingdirectory)
 
       - task: PublishPipelineArtifact@1

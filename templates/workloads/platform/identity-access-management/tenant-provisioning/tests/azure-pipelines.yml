@@ -17,49 +17,8 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-# variables:
-#   - template: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
-
 extends: 
   template: /pipelines/01-workloads/alz.platform.workload.yml@ReleaseEngine
   parameters:
     workloadSettings:
-      workloadName: tenant-provisioning
-      configurationFilePath: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
-  
-  
-  # parameters:
-  #   settings:
-  #     build:
-  #       enabled: true
-  #     deploy:
-  #       enabled: true
-  #       variablesDirectory: src/definitions/cloud/azure/appConfiguration/tests/examples/variables
-  #       infrastructure:
-  #         enabled: true
-  #       application:
-  #         enabled: false
-  #     azure:
-  #       subscription:
-  #         serviceConnection: $(serviceConnection)
-  #         subscriptionId: $(subscriptionId)
-  #       resourceGroup:
-  #         name: $(resourceGroupName)
-  #         location: $(location)
-  #         new: true
-  #     environments:
-  #       - dev
-  #       # - uat
-  #       # - prd
-  #   resources:
-
-  #     - name: spokeNetwork
-  #       type: spokeNetwork
-  #       jobName: spokeNetwork
-  #       enabled: true
-  #       deploy:
-  #         infrastructure:
-  #           enabled: true
-  #           type: terraform
-  #           variablesDirectory: src/definitions/cloud/azure/landingZones/platform/connectivity/spokeNetwork/tests/examples/variables
-            
+      configurationFilePath: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config
