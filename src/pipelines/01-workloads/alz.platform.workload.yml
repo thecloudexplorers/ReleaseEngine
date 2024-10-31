@@ -7,6 +7,9 @@ variables:
     value: ServiceConnection
   - template: /src/_config/config.yml
 
+variables:
+  workloadName: tenant-provisioning
+
 stages:
 
   - template: /src/pipelines/02-stages/iac.build.stage.yml
