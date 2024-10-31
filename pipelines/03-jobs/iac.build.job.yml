@@ -37,5 +37,5 @@ jobs:
       - task: PublishPipelineArtifact@1
         inputs:
           targetPath: $(build.artifactstagingdirectory)/utilities
-          artifact: ${{ variables.workload }}
+          artifact: utilities
           publishLocation: pipeline
