@@ -27,7 +27,7 @@ jobs:
           Contents: |
             **\*.ps1
             **\*.ps1
-          TargetFolder: $(outputDirectory)
+          TargetFolder: $(build.artifactstagingdirectory)
 
       - task: PublishPipelineArtifact@1
         inputs:
