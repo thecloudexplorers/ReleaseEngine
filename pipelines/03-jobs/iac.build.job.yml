@@ -18,6 +18,7 @@ jobs:
           Contents: |
             **
           TargetFolder: $(build.artifactstagingdirectory)
+          flattenFolders: false
 
       - task: CopyFiles@2
         displayName: Copying Workload content
@@ -26,6 +27,7 @@ jobs:
           Contents: |
             **
           TargetFolder: $(build.artifactstagingdirectory)
+          flattenFolders: false
 
       - task: PublishPipelineArtifact@1
         inputs:
