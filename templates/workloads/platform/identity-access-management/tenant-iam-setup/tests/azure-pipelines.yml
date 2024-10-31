@@ -10,10 +10,9 @@ trigger:
   branches:
     include:
     - users/wcamargo/*
-  paths:
-    include:
-      - ./*
-      # - templates/workloads/platform/identity-access-management/tenant-iam-setup
+  # paths:
+  #   include:
+  #     - templates/workloads/platform/identity-access-management/tenant-iam-setup
             
 pool:
   vmImage: 'windows-latest'

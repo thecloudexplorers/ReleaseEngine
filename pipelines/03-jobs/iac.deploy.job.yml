@@ -13,7 +13,7 @@ jobs:
         deploy:
           steps:
             - powershell: |
-                Get-ChildItem $(System.ArtifactsDirectory) -Recurse
+                Get-ChildItem $(Pipeline.Workspace) -Recurse
                 
             
             # - task: AzureResourceManagerTemplateDeployment@3
