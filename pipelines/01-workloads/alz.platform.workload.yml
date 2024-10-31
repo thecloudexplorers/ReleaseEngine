@@ -5,7 +5,7 @@ parameters:
 variables:
   - name: serviceConnection
     value: ServiceConnection
-  - template: /_config/config.yml
+  - template: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
 
 stages:
 
