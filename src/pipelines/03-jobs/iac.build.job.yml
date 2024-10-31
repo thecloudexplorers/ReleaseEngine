@@ -23,7 +23,7 @@ jobs:
       - task: CopyFiles@2
         displayName: Copying Workload files
         inputs:
-          SourceFolder: $(workloadName) # tenant-provisioning
+          SourceFolder: /workloads/platform/identity-access-management/$(workloadName) # tenant-provisioning
           Contents: |
             **\*.ps1
             **\*.ps1
