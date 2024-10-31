@@ -1,7 +1,7 @@
 variables:
   landingZoneType: platform
   designArea: identity-access-management
-  workload: tenant-provisioning
+  workload: tenant-iam-setup
 
   # releaseEngineRepositoryName: ReleaseEngine
   releaseEngineRepositoryName:
