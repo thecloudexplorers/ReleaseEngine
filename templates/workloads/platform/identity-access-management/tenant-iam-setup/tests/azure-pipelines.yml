@@ -22,3 +22,6 @@ extends:
   parameters:
     workloadSettings:
       configurationFilePath: /templates/workloads/platform/identity-access-management/tenant-iam-setup/tests/_config
+      environments:
+        - dev
+        - prod
