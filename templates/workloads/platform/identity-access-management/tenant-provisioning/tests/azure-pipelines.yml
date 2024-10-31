@@ -17,6 +17,9 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+variables:
+  - template: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
+
 extends: 
   template: /src/pipelines/01-workloads/alz.platform.workload.yml@ReleaseEngine
   parameters:

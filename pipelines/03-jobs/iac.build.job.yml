@@ -4,7 +4,7 @@ parameters:
 
 jobs:
 
-  - job: ${{ variables.workloadName }}_build
+  - job: ${{ variables.workload }}_build
     displayName: Building IaC Artifacts
     # variables:
       
@@ -23,7 +23,7 @@ jobs:
       - task: CopyFiles@2
         displayName: Copying Workload files
         inputs:
-          SourceFolder: templates/workloads/platform/identity-access-management/$(workloadName) # tenant-provisioning
+          SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload) # tenant-provisioning
           Contents: |
             **\*.ps1
             **\*.ps1

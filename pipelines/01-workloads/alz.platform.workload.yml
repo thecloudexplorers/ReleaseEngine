@@ -5,8 +5,6 @@ parameters:
 variables:
   - name: serviceConnection
     value: ServiceConnection
-  - name: workloadName
-    value: tenant-provisioning
   - template: /src/_config/config.yml
   
 
