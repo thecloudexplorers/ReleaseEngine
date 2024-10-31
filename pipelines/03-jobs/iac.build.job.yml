@@ -6,19 +6,9 @@ jobs:
 
   - job: ${{ variables.workload }}_build
     displayName: Building IaC Artifacts
-    # variables:
       
     steps:
       - checkout: self
-
-      - task: CopyFiles@2
-        displayName: Copying Utilities content
-        inputs:
-          SourceFolder: templates/utilities
-          Contents: |
-            **
-          TargetFolder: $(build.artifactstagingdirectory)
-          flattenFolders: false
 
       - task: CopyFiles@2
         displayName: Copying Workload content
@@ -26,11 +16,26 @@ jobs:
           SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload)
           Contents: |
             **
-          TargetFolder: $(build.artifactstagingdirectory)
+          TargetFolder: $(build.artifactstagingdirectory)/${{ variables.workload }}
+          flattenFolders: false
+
+      - task: CopyFiles@2
+        displayName: Copying Utilities content
+        inputs:
+          SourceFolder: templates/utilities
+          Contents: |
+            **
+          TargetFolder: $(build.artifactstagingdirectory)/utilities
           flattenFolders: false
 
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: $(build.artifactstagingdirectory)
-          artifact: artifact
-          publishLocation: pipeline      
+          targetPath: $(build.artifactstagingdirectory)/${{ variables.workload }}
+          artifact: ${{ variables.workload }}
+          publishLocation: pipeline
+
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: $(build.artifactstagingdirectory)/utilities
+          artifact: ${{ variables.workload }}
+          publishLocation: pipeline
