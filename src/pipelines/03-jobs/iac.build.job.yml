@@ -4,7 +4,7 @@ parameters:
 
 jobs:
 
-  - job: ${{ parameters.workloadName }}_build
+  - job: $(workloadName)_build
     displayName: Building IaC Artifacts
     # variables:
       

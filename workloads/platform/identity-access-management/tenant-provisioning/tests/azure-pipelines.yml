@@ -18,6 +18,9 @@ pool:
   # vmImage: 'windows-latest'
   name: default
 
+variables:
+  workloadName: tenant-provisioning
+
 extends: 
   template: /src/pipelines/01-workloads/alz.platform.workload.yml@ReleaseEngine
   parameters:
