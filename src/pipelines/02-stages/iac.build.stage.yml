@@ -1,0 +1,8 @@
+parameters:
+  - name: workloadSettings
+    type: object
+
+stages:
+  - template: /src/pipelines/03-jobs/iac.powershell.build.job.yml
+    parameters:
+      workloadSettings: ${{ parameters.workloadSettings }}

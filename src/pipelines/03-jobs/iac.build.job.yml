@@ -1,0 +1,47 @@
+parameters:
+  - name: workloadSettings
+    type: object
+  - name: jobSettings
+    type: object
+
+jobs:
+  - job: ${{ parameters.resource.jobName }}_Build
+    displayName: App Configuration Build Job
+    steps:
+
+  - job: ${{ parameters.workloadName }}_build
+    displayName: Building IaC Artifacts
+    # variables:
+      
+
+    steps:
+      - checkout: self
+
+      # TODO: Move to specific file?
+      # - task: CopyFiles@2
+      #   displayName: Copying Utilities files
+      #   inputs:
+      #     SourceFolder: /utilities
+      #     Contents: |
+      #       **\*
+      #     TargetFolder: $(build.artifactstagingdirectory)/utilities
+
+      - task: CopyFiles@2
+        displayName: Copying Workload files
+        inputs:
+          SourceFolder: $(workloadName) # tenant-provisioning
+          Contents: |
+            **\*.ps1
+            **\*.ps1
+          TargetFolder: $(outputDirectory)
+
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: $(build.artifactstagingdirectory)
+          artifact: powershell
+          publishLocation: pipeline      
+
+      # - task: PublishBuildArtifacts@1
+      #   inputs:
+      #     pathToPublish: $(Build.ArtifactStagingDirectory)
+      #     artifactName: $(configFilesArtifactName)
