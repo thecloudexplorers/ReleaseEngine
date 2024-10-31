@@ -5,7 +5,7 @@ parameters:
 jobs:
 
   - job: ${{ variables.workload }}_build
-    displayName: Building IaC Artifacts
+    # displayName: Building IaC Artifacts
       
     steps:
       - checkout: self
