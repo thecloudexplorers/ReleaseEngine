@@ -1,8 +1,6 @@
 parameters:
   - name: workloadSettings
     type: object
-  - name: jobSettings
-    type: object
 
 jobs:
 
