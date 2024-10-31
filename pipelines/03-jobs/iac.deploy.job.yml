@@ -6,13 +6,15 @@ parameters:
 
 jobs:
   - deployment: workload_deployment #TODO: parametrize
-    displayName: Azure Resource Group Deployment
+    displayName: Azure Deployment
     environment: ${{ parameters.jobSettings.environment }}
     strategy:
       runOnce:
         deploy:
           steps:
-            - powershell: Write-Host "Hello!"
+            - powershell: |
+                Get-ChildItem $(System.ArtifactsDirectory) -Recurse
+                
             
             # - task: AzureResourceManagerTemplateDeployment@3
             #   displayName: Creating Resource Group '${{ parameters.resource.name }}' by IaC
