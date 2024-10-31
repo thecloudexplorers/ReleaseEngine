@@ -11,7 +11,7 @@ stages:
 
   - template: /src/pipelines/02-stages/iac.build.stage.yml
     parameters:
-      settings: ${{ parameters.workloadSettings }}
+      workloadSettings: ${{ parameters.workloadSettings }}
 
   # - template: /src/pipelines/02-stages/iac.deploy.stage.yml
   #   parameters:
