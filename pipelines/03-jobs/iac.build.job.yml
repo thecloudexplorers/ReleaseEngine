@@ -12,28 +12,23 @@ jobs:
       - checkout: self
 
       - task: CopyFiles@2
-        displayName: Copying Utilities files
+        displayName: Copying Utilities content
         inputs:
           SourceFolder: templates/utilities
           Contents: |
-            **\*
+            **
           TargetFolder: $(build.artifactstagingdirectory)
 
       - task: CopyFiles@2
-        displayName: Copying Workload files
+        displayName: Copying Workload content
         inputs:
-          SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload) # tenant-provisioning
+          SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload)
           Contents: |
-            **\*.ps1
+            **
           TargetFolder: $(build.artifactstagingdirectory)
 
       - task: PublishPipelineArtifact@1
         inputs:
           targetPath: $(build.artifactstagingdirectory)
-          artifact: powershell
+          artifact: artifact
           publishLocation: pipeline      
-
-      # - task: PublishBuildArtifacts@1
-      #   inputs:
-      #     pathToPublish: $(Build.ArtifactStagingDirectory)
-      #     artifactName: $(configFilesArtifactName)
