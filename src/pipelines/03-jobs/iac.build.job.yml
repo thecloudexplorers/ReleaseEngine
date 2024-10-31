@@ -5,15 +5,11 @@ parameters:
     type: object
 
 jobs:
-  - job: ${{ parameters.resource.jobName }}_Build
-    displayName: App Configuration Build Job
-    steps:
 
   - job: ${{ parameters.workloadName }}_build
     displayName: Building IaC Artifacts
     # variables:
       
-
     steps:
       - checkout: self
 
