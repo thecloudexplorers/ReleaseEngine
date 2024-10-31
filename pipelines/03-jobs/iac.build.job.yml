@@ -16,26 +16,26 @@ jobs:
           SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload)
           Contents: |
             **
-          TargetFolder: $(build.artifactstagingdirectory)/${{ variables.workload }}
+          TargetFolder: $(build.artifactstagingdirectory)/$(workload)
           flattenFolders: false
 
-      - task: CopyFiles@2
-        displayName: Copying Utilities content
-        inputs:
-          SourceFolder: templates/utilities
-          Contents: |
-            **
-          TargetFolder: $(build.artifactstagingdirectory)/utilities
-          flattenFolders: false
+      # - task: CopyFiles@2
+      #   displayName: Copying Utilities content
+      #   inputs:
+      #     SourceFolder: templates/utilities
+      #     Contents: |
+      #       **
+      #     TargetFolder: $(build.artifactstagingdirectory)/utilities
+      #     flattenFolders: false
 
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: $(build.artifactstagingdirectory)/${{ variables.workload }}
-          artifact: ${{ variables.workload }}
+          targetPath: $(build.artifactstagingdirectory)/$(workload)
+          artifact: $(workload)
           publishLocation: pipeline
 
-      - task: PublishPipelineArtifact@1
-        inputs:
-          targetPath: $(build.artifactstagingdirectory)/utilities
-          artifact: utilities
-          publishLocation: pipeline
+      # - task: PublishPipelineArtifact@1
+      #   inputs:
+      #     targetPath: $(build.artifactstagingdirectory)/utilities
+      #     artifact: utilities
+      #     publishLocation: pipeline
