@@ -11,7 +11,7 @@ stages:
         - template: /${{ parameters.workloadSettings.configurationFilePath }}/${{ env }}-vars.yml@self
 
       jobs:
-        - template: /pipelines/03-jobs/iac.build.job.yml
+        - template: /pipelines/03-jobs/iac.deploy.job.yml
           parameters:
             workloadSettings: ${{ parameters.workloadSettings }}
             jobSettings: 
