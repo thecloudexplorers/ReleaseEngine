@@ -17,14 +17,15 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-variables:
-  - template: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
+# variables:
+#   - template: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
 
 extends: 
   template: /pipelines/01-workloads/alz.platform.workload.yml@ReleaseEngine
   parameters:
     workloadSettings:
       workloadName: tenant-provisioning
+      configurationFilePath: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
   
   
   # parameters:

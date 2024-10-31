@@ -5,7 +5,7 @@ parameters:
 variables:
   - name: serviceConnection
     value: ServiceConnection
-  - template: /templates/workloads/platform/identity-access-management/tenant-provisioning/tests/_config/metadata.yml
+  - template: ${{ parameters.workloadSettings.configurationFilePath }}@self
 
 stages:
 
