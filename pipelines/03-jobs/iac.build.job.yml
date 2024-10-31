@@ -15,14 +15,16 @@ jobs:
         displayName: Copying Utilities files
         inputs:
           SourceFolder: templates/utilities
-          Contents: **\*
+          Contents: |
+            **\*
           TargetFolder: $(build.artifactstagingdirectory)
 
       - task: CopyFiles@2
         displayName: Copying Workload files
         inputs:
           SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload) # tenant-provisioning
-          Contents: **\*.ps1
+          Contents: |
+            **\*.ps1
           TargetFolder: $(build.artifactstagingdirectory)
 
       - task: PublishPipelineArtifact@1
