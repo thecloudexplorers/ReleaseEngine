@@ -35,8 +35,8 @@ jobs:
           artifact: $(workload)
           publishLocation: pipeline
 
-      # - task: PublishPipelineArtifact@1
-      #   inputs:
-      #     targetPath: $(build.artifactstagingdirectory)/utilities
-      #     artifact: utilities
-      #     publishLocation: pipeline
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: $(build.artifactstagingdirectory)/utilities
+          artifact: utilities
+          publishLocation: pipeline
