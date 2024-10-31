@@ -5,7 +5,7 @@ parameters:
     type: object
 
 jobs:
-  - deployment: workload-deployment #TODO: parametrize
+  - deployment: workload_deployment #TODO: parametrize
     displayName: Azure Resource Group Deployment
     environment: ${{ parameters.jobSettings.environment }}
     strategy:
