@@ -2,7 +2,9 @@ parameters:
   - name: workloadSettings
     type: object
 
-jobs:
-  - template: /src/pipelines/03-jobs/iac.build.job.yml
-    parameters:
-      workloadSettings: ${{ parameters.workloadSettings }}
+stages:
+  - stage: build
+    jobs:
+      - template: /src/pipelines/03-jobs/iac.build.job.yml
+        parameters:
+          workloadSettings: ${{ parameters.workloadSettings }}
