@@ -5,6 +5,6 @@ parameters:
 stages:
   - stage: build
     jobs:
-      - template: /src/pipelines/03-jobs/iac.build.job.yml
+      - template: /pipelines/03-jobs/iac.build.job.yml
         parameters:
           workloadSettings: ${{ parameters.workloadSettings }}

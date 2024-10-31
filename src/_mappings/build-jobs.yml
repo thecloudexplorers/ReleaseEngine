@@ -11,13 +11,13 @@ jobs:
     - ${{ if eq(resource.enabled, 'true') }}:
 
       - ${{ if eq(resource.type, 'appConfiguration') }}:
-        - template: /src/definitions/cloud/azure/appConfiguration/jobs/appConfiguration-build-jobs.yml
+        - template: /definitions/cloud/azure/appConfiguration/jobs/appConfiguration-build-jobs.yml
           parameters:
             settings: ${{ parameters.settings }}
             resource: ${{ resource }}
 
       - ${{ if eq(resource.type, 'resourceGroup') }}:
-        - template: /src/definitions/cloud/azure/resourceGroup/jobs/resourceGroup-build-jobs.yml
+        - template: /definitions/cloud/azure/resourceGroup/jobs/resourceGroup-build-jobs.yml
           parameters:
             settings: ${{ parameters.settings }}
             resource: ${{ resource }}

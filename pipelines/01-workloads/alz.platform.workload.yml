@@ -5,16 +5,15 @@ parameters:
 variables:
   - name: serviceConnection
     value: ServiceConnection
-  - template: /src/_config/config.yml
-  
+  - template: /_config/config.yml
 
 stages:
 
-  - template: /src/pipelines/02-stages/iac.build.stage.yml
+  - template: /pipelines/02-stages/iac.build.stage.yml
     parameters:
       workloadSettings: ${{ parameters.workloadSettings }}
 
-  # - template: /src/pipelines/02-stages/iac.deploy.stage.yml
+  # - template: /pipelines/02-stages/iac.deploy.stage.yml
   #   parameters:
   #     settings: ${{ parameters.settings }}
   
