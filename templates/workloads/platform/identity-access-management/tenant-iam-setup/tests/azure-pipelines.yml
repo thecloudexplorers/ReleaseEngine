@@ -12,7 +12,8 @@ trigger:
     - users/wcamargo/*
   paths:
     include:
-      - templates/workloads/platform/identity-access-management/tenant-iam-setup
+      - ./*
+      # - templates/workloads/platform/identity-access-management/tenant-iam-setup
             
 pool:
   vmImage: 'windows-latest'
