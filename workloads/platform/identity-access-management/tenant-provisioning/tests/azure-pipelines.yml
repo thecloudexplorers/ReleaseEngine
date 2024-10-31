@@ -21,7 +21,7 @@ pool:
 extends: 
   template: /src/pipelines/01-workloads/alz.platform.workload.yml@ReleaseEngine
   parameters:
-    settings:
+    workloadSettings:
       workloadName: tenant-provisioning
   
   
