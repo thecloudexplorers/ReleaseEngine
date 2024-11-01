@@ -16,8 +16,7 @@ jobs:
             - powershell: |
                 Get-ChildItem $(Pipeline.Workspace) -Recurse
 
-            - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:
-            
+            - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:            
               - ${{ each script in parameters.workloadSettings.deploymentScript }}:
                 
                 - task: AzurePowerShell@5
@@ -32,7 +31,6 @@ jobs:
                     azurePowerShellVersion: LatestVersion
                     # ${{ if ne(script.arguments, '') }}:
                     ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
-                    workingDirectory: $(Pipeline.Workspace)
 
             # - task: AzurePowerShell@5
             #     name: deploy_bicep_task
