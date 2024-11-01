@@ -31,7 +31,7 @@ jobs:
                     azurePowerShellVersion: LatestVersion
                     # ${{ if ne(script.arguments, '') }}:
                     ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
-                  workingDirectory: $(Pipeline.Workspace)
+                    workingDirectory: $(Pipeline.Workspace)
 
             # - task: AzurePowerShell@5
             #     name: deploy_bicep_task
