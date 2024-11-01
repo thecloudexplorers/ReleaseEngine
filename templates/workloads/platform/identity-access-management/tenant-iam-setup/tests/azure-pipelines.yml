@@ -15,7 +15,7 @@ trigger:
   #     - templates/workloads/platform/identity-access-management/tenant-iam-setup
             
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 extends: 
   template: /pipelines/01-workloads/alz.platform.workload.yml@ReleaseEngine
