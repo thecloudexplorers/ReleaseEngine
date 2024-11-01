@@ -14,7 +14,35 @@ jobs:
           steps:
             - powershell: |
                 Get-ChildItem $(Pipeline.Workspace) -Recurse
-                
+
+            - task: AzurePowerShell@5
+                name: deploy_azure_powershell
+                displayName: 'Deploy Azure PowerShell'
+                inputs:
+                  pwsh: true
+                  azureSubscription: $(serviceConnection)
+                  ScriptType: FilePath
+                  # ScriptPath: $(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1
+                  ScriptPath: ${{ parameters.workloadSettings.deploymentScript.path }}
+                  azurePowerShellVersion: LatestVersion
+                  ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
+
+            # - task: AzurePowerShell@5
+            #     name: deploy_bicep_task
+            #     displayName: 'Deploy Bicep'
+            #     inputs:
+            #       pwsh: true
+            #       azureSubscription: '$(serviceConnection)'
+            #       ScriptType: 'FilePath'
+            #       ScriptPath: '$(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1'
+            #       azurePowerShellVersion: 'LatestVersion'
+            #       ScriptArguments: >-
+            #         -TemplateFilePath "$(IaCMainFilePath)"
+            #         -ResourceLocation "$(ResourceLocation)"
+            #         -SolutionName "observability-solution"
+            #         -CustomBicepParameters @{resourceGroupName="$(LogAnalyticsWorkspaceResourceGroup)"; resourceLocation="$(ResourceLocation)"; workspaceName="$(LogAnalyticsWorkspaceName)"}  
+
+             
             
             # - task: AzureResourceManagerTemplateDeployment@3
             #   displayName: Creating Resource Group '${{ parameters.resource.name }}' by IaC

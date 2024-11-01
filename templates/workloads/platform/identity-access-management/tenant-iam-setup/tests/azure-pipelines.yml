@@ -24,4 +24,9 @@ extends:
       configurationFilePath: /templates/workloads/platform/identity-access-management/tenant-iam-setup/tests/_config
       environments:
         - dev
-        # - prd
+      # - prd
+      deploymentScript:
+        - name: Get-EnvironmentVariables.ps1
+          # arguments: -Argument1 "value" -Argument2 "value"
+        # - name: Set-BreakGlassAccount.ps1
+        #   arguments: -Argument1 "value" -Argument2 "value"
