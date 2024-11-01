@@ -29,8 +29,8 @@ jobs:
                       # ScriptPath: $(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1
                       ScriptPath: ${{ script.name }}
                       azurePowerShellVersion: LatestVersion
-                      ${{ if ne(script.arguments, '') }}:
-                        ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
+                      # ${{ if ne(script.arguments, '') }}:
+                      ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
 
             # - task: AzurePowerShell@5
             #     name: deploy_bicep_task
