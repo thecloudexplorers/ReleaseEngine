@@ -27,6 +27,6 @@ extends:
       # - prd
       deploymentScript:
         - name: Get-EnvironmentVariables.ps1
-          # arguments: -Argument1 "value" -Argument2 "value"
+          arguments:
         # - name: Set-BreakGlassAccount.ps1
         #   arguments: -Argument1 "value" -Argument2 "value"
