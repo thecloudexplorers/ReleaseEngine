@@ -29,12 +29,14 @@ jobs:
           TargetFolder: $(build.artifactstagingdirectory)/utilities
           flattenFolders: false
       
-      - task: PublishBuildArtifacts@1
+      - task: PublishPipelineArtifact@1
         inputs:
-          pathToPublish: $(build.artifactstagingdirectory)/$(workload)
-          artifactName: $(workload)
-
-      - task: PublishBuildArtifacts@1
+          targetPath: $(build.artifactstagingdirectory)/$(workload)
+          artifact: $(workload)
+          publishLocation: pipeline
+      
+      - task: PublishPipelineArtifact@1
         inputs:
-          pathToPublish: $(build.artifactstagingdirectory)/utilities
-          artifactName: utilities
+          targetPath: $(build.artifactstagingdirectory)/utilities
+          artifact: utilities
+          publishLocation: pipeline
