@@ -20,17 +20,19 @@ jobs:
               - ${{ each script in parameters.workloadSettings.deploymentScript }}:
                 
                 - task: AzurePowerShell@5
-                  name: deploy_azure_powershell
+                  name: 'deploy_azure_powershell'
                   displayName: 'Deploy Azure PowerShell'
                   inputs:
                     pwsh: true
-                    azureSubscription: $(serviceConnection)
-                    ScriptType: FilePath
+                    azureSubscription: '$(serviceConnection)'
+                    ScriptType: 'FilePath'
                     # ScriptPath: $(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1
-                    ScriptPath: $(workload)/scripts/${{ script.name }}
-                    azurePowerShellVersion: LatestVersion
+                    ScriptPath: '$(workload)/scripts/${{ script.name }}'
+                    azurePowerShellVersion: 'LatestVersion'
                     # ${{ if ne(script.arguments, '') }}:
-                    ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
+                    ScriptArguments: '${{ parameters.workloadSettings.deploymentScript.arguments }}'
+                    workingDirectory: '$(Pipeline.Workspace)' 
+                    
 
             # - task: AzurePowerShell@5
             #     name: deploy_bicep_task
