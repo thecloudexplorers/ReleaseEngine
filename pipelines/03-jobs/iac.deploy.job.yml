@@ -13,7 +13,7 @@ jobs:
         deploy:
           steps:
             - powershell: |
-                Get-ChildItem $(Agent.BuildDirectory) -Recurse
+                Get-ChildItem $(System.ArtifactsDirectory) -Recurse
 
             - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:
             
@@ -31,7 +31,7 @@ jobs:
                     azurePowerShellVersion: LatestVersion
                     # ${{ if ne(script.arguments, '') }}:
                     ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
-                    workingDirectory: $(Agent.BuildDirectory)
+                    workingDirectory: $(System.ArtifactsDirectory)
 
             # - task: AzurePowerShell@5
             #     name: deploy_bicep_task
