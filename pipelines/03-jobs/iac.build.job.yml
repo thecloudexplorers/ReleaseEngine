@@ -8,8 +8,6 @@ jobs:
     displayName: Building IaC Artifacts
       
     steps:
-      - checkout: self
-
       - task: CopyFiles@2
         displayName: Copying Workload content
         inputs:
@@ -28,15 +26,13 @@ jobs:
             **
           TargetFolder: $(build.artifactstagingdirectory)/utilities
           flattenFolders: false
-      
-      - task: PublishPipelineArtifact@1
+
+      - task: PublishBuildArtifacts@1
         inputs:
-          targetPath: $(build.artifactstagingdirectory)/$(workload)
-          artifact: $(workload)
-          publishLocation: pipeline
-      
-      - task: PublishPipelineArtifact@1
+          pathToPublish: $(build.artifactstagingdirectory)/$(workload)
+          artifactName: pipeline
+
+      - task: PublishBuildArtifacts@1
         inputs:
-          targetPath: $(build.artifactstagingdirectory)/utilities
-          artifact: utilities
-          publishLocation: pipeline
+          pathToPublish: $(build.artifactstagingdirectory)/utilities
+          artifactName: utilities
