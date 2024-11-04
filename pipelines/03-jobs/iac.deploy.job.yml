@@ -10,13 +10,17 @@ jobs:
   - job: workload_deployment_job
     displayName: Workload Deployment Job
     steps:
-
-      - task: DownloadBuildArtifacts@1
+      - task: DownloadPipelineArtifact@2
         inputs:
-          buildType: current
-          downloadType: single
-          artifactName: artifacts
-          downloadPath: $(Pipeline.Workspace)
+          buildType: 'current'
+          targetPath: '$(Pipeline.Workspace)'
+
+      # - task: DownloadBuildArtifacts@1
+      #   inputs:
+      #     buildType: current
+      #     downloadType: single
+      #     artifactName: artifacts
+      #     downloadPath: $(Pipeline.Workspace)
 
       - powershell: |
           Get-ChildItem  $(Pipeline.Workspace) -Recurse
