@@ -1,5 +1,5 @@
 variables:
   landingZoneType: _TEMPLATE_platform_OR_application
   designArea:
-  applicationLandingZone: applz-template
+  applicationLandingZone: caf-design-area_OR_application-landing-zone
   workload: workload-name
