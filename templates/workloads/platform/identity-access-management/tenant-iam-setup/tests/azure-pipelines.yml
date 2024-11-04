@@ -24,9 +24,9 @@ extends:
         - dev
       # - prd
       deploymentScript:
-        - name: Get-EnvironmentVariables
+        - name: Agent_ListDirectoryItems
           scriptExtension: ps1
           arguments:
-        - name: Get-DirectoryItems
+        - name: Agent_ListEnvironmentVariables
           scriptExtension: ps1
           arguments: -Directory "$(Pipeline.Workspace)"
