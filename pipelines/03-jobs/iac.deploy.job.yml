@@ -8,6 +8,7 @@ jobs:
   - deployment: workload_deployment #TODO: parametrize
     displayName: Azure Deployment
     environment: ${{ parameters.jobSettings.environment }}
+    dependsOn: ${{ variables.workload }}_build 
     strategy:
       runOnce:
         deploy:
