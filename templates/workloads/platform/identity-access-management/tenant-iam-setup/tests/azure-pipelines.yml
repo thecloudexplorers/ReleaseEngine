@@ -7,9 +7,7 @@ resources:
     ref: users/wcamargo/new-structure
 
 trigger:
-  branches:
-    include:
-    - users/wcamargo/*
+  - users/wcamargo/*
   # paths:
   #   include:
   #     - templates/workloads/platform/identity-access-management/tenant-iam-setup

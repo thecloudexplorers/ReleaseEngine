@@ -33,7 +33,7 @@ jobs:
                   - ${{ each script in parameters.workloadSettings.deploymentScript }}:
                     
                     - task: AzurePowerShell@5
-                      name: deploy_azure_powershell
+                      name: deploy_azure_powershell_${{ script.name }}
                       displayName: Deploy Azure PowerShell
                       inputs:                    
                         pwsh: true
