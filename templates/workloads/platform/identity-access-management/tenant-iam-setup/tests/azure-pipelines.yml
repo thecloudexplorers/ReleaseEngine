@@ -28,5 +28,5 @@ extends:
       deploymentScript:
         - name: Get-EnvironmentVariables.ps1
           arguments:
-        # - name: Set-BreakGlassAccount.ps1
-        #   arguments: -Argument1 "value" -Argument2 "value"
+        - name: Get-DirectoryItems.ps1
+          arguments: -Directory "$(Pipeline.Workspace)"
