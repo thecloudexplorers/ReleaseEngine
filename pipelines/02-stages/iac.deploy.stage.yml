@@ -3,11 +3,11 @@ parameters:
     type: object
 
 stages:
-  dependsOn: build
   
   - ${{ each env in parameters.workloadSettings.environments }}:
   
     - stage: ${{ env }}
+      dependsOn: build
       variables:
         - template: /${{ parameters.workloadSettings.configurationFilePath }}/${{ env }}-vars.yml@self
 
