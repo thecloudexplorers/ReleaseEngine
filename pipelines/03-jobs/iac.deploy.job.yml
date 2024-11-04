@@ -4,41 +4,74 @@ parameters:
   - name: jobSettings
     type: object
 
+
+
 jobs:
-  - deployment: workload_deployment #TODO: parametrize
-    displayName: Azure Deployment
-    environment: ${{ parameters.jobSettings.environment }}    
-    strategy:
-      runOnce:
-        deploy:
-          steps:
+  - job: workload_deployment_job
+    displayName: Workload Deployment Job
+    steps:
 
-            # - task: DownloadBuildArtifacts@1
-            #   inputs:
-            #     buildType: current
-            #     downloadType: single
-            #     artifactName: artifacts
-            #     downloadPath: $(System.ArtifactsDirectory)
+      - task: DownloadBuildArtifacts@1
+        inputs:
+          buildType: current
+          downloadType: single
+          artifactName: artifacts
+          downloadPath: $(Pipeline.Workspace)
 
-            - powershell: |
-                Get-ChildItem  $(Pipeline.Workspace) -Recurse
+      - powershell: |
+          Get-ChildItem  $(Pipeline.Workspace) -Recurse
 
-            - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:            
-              - ${{ each script in parameters.workloadSettings.deploymentScript }}:
+      - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:            
+            - ${{ each script in parameters.workloadSettings.deploymentScript }}:
+              
+              - task: AzurePowerShell@5
+                name: deploy_azure_powershell
+                displayName: Deploy Azure PowerShell
+                inputs:                    
+                  pwsh: true
+                  azureSubscription: $(serviceConnection)
+                  ScriptType: FilePath
+                  # ScriptPath: $(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1
+                  ScriptPath: /$(workload)/scripts/${{ script.name }}
+                  azurePowerShellVersion: LatestVersion
+                  # ${{ if ne(script.arguments, '') }}:
+                  ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
+                  workingDirectory: $(Pipeline.Workspace)    
+# jobs:
+#   - deployment: workload_deployment #TODO: parametrize
+#     displayName: Azure Deployment
+#     environment: ${{ parameters.jobSettings.environment }}    
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
+
+#             # - task: DownloadBuildArtifacts@1
+#             #   inputs:
+#             #     buildType: current
+#             #     downloadType: single
+#             #     artifactName: artifacts
+#             #     downloadPath: $(System.ArtifactsDirectory)
+
+#             - powershell: |
+#                 Get-ChildItem  $(Pipeline.Workspace) -Recurse
+
+#             - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:            
+#               - ${{ each script in parameters.workloadSettings.deploymentScript }}:
                 
-                - task: AzurePowerShell@5
-                  name: deploy_azure_powershell
-                  displayName: Deploy Azure PowerShell
-                  inputs:                    
-                    pwsh: true
-                    azureSubscription: $(serviceConnection)
-                    ScriptType: FilePath
-                    # ScriptPath: $(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1
-                    ScriptPath: /$(workload)/scripts/${{ script.name }}
-                    azurePowerShellVersion: LatestVersion
-                    # ${{ if ne(script.arguments, '') }}:
-                    ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
-                    workingDirectory: $(Pipeline.Workspace)
+#                 - task: AzurePowerShell@5
+#                   name: deploy_azure_powershell
+#                   displayName: Deploy Azure PowerShell
+#                   inputs:                    
+#                     pwsh: true
+#                     azureSubscription: $(serviceConnection)
+#                     ScriptType: FilePath
+#                     # ScriptPath: $(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1
+#                     ScriptPath: /$(workload)/scripts/${{ script.name }}
+#                     azurePowerShellVersion: LatestVersion
+#                     # ${{ if ne(script.arguments, '') }}:
+#                     ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
+#                     workingDirectory: $(Pipeline.Workspace)
                     
                     
 
