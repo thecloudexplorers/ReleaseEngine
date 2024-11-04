@@ -1,0 +1,5 @@
+variables:
+  landingZoneType: application
+  designArea:
+  appLandingZone: applz-template
+  workload: workload-template
