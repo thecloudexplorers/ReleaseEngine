@@ -1,0 +1,4 @@
+variables:
+  landingZoneType: platform
+  designArea: identity-access-management
+  workload: tenant-iam-setup
