@@ -29,8 +29,7 @@ jobs:
                 - task: AzurePowerShell@5
                   name: 'deploy_azure_powershell'
                   displayName: 'Deploy Azure PowerShell'
-                  inputs:
-                    workingDirectory: '$(Pipeline.Workspace)'
+                  inputs:                    
                     pwsh: true
                     azureSubscription: '$(serviceConnection)'
                     ScriptType: 'FilePath'
