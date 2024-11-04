@@ -3,6 +3,7 @@ parameters:
     type: object
 
 stages:
+  dependsOn: build
   
   - ${{ each env in parameters.workloadSettings.environments }}:
   
