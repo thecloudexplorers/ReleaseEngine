@@ -14,10 +14,10 @@ jobs:
       runOnce:
         deploy:
           steps:
-            - task: DownloadPipelineArtifact@2
-              inputs:
-                buildType: 'current'
-                targetPath: '$(Pipeline.Workspace)'
+            # - task: DownloadPipelineArtifact@2
+            #   inputs:
+            #     buildType: 'current'
+            #     targetPath: '$(Pipeline.Workspace)'
 
             # - task: DownloadBuildArtifacts@1
             #   inputs:
