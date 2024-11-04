@@ -17,6 +17,7 @@ jobs:
           Contents: |
             **
             !tests/**
+            !examples/**
           TargetFolder: $(build.artifactstagingdirectory)/$(workload)
           flattenFolders: false
 
@@ -26,6 +27,8 @@ jobs:
           SourceFolder: templates/utilities
           Contents: |
             **
+            !tests/**
+            !examples/**
           TargetFolder: $(build.artifactstagingdirectory)/utilities
           flattenFolders: false
       
