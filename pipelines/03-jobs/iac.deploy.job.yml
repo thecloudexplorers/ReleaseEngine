@@ -7,15 +7,21 @@ parameters:
 jobs:
   - deployment: workload_deployment #TODO: parametrize
     displayName: Azure Deployment
-    environment: ${{ parameters.jobSettings.environment }}
-    # dependsOn: ${{ variables.workload }}_build 
+    environment: ${{ parameters.jobSettings.environment }}    
     strategy:
       runOnce:
         deploy:
           steps:
 
+            - task: DownloadBuildArtifacts@1
+              inputs:
+                buildType: current
+                downloadType: single
+                artifactName: artifacts
+                downloadPath: $(System.ArtifactsDirectory)
+
             - powershell: |
-                Get-ChildItem  $(Pipeline.Workspace)-Recurse
+                Get-ChildItem  $(Pipeline.Workspace) -Recurse
 
             - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:            
               - ${{ each script in parameters.workloadSettings.deploymentScript }}:
