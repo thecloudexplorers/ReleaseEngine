@@ -13,7 +13,7 @@ jobs:
       - task: CopyFiles@2
         displayName: Copying Workload content
         inputs:
-          SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)/$(workload)
+          SourceFolder: templates/workloads/$(landingZoneType)/$(designArea)$(applicationLandingZone)/$(workload)
           Contents: |
             **
             !tests/**
@@ -40,13 +40,3 @@ jobs:
           targetPath: $(build.artifactstagingdirectory)/utilities
           artifact: utilities
           publishLocation: pipeline
-
-      # - task: PublishBuildArtifacts@1
-      #   inputs:
-      #     pathToPublish: $(build.artifactstagingdirectory)/$(workload)
-      #     artifactName: pipeline
-
-      # - task: PublishBuildArtifacts@1
-      #   inputs:
-      #     pathToPublish: $(build.artifactstagingdirectory)/utilities
-      #     artifactName: utilities

@@ -14,20 +14,6 @@ jobs:
       runOnce:
         deploy:
           steps:
-            # - task: DownloadPipelineArtifact@2
-            #   inputs:
-            #     buildType: 'current'
-            #     targetPath: '$(Pipeline.Workspace)'
-
-            # - task: DownloadBuildArtifacts@1
-            #   inputs:
-            #     buildType: current
-            #     downloadType: single
-            #     artifactName: artifacts
-            #     downloadPath: $(Pipeline.Workspace)
-
-            - powershell: |
-                Get-ChildItem  $(Pipeline.Workspace) -Recurse
 
             - ${{ if ne(parameters.workloadSettings.deploymentScript, '') }}:            
                   - ${{ each script in parameters.workloadSettings.deploymentScript }}:
