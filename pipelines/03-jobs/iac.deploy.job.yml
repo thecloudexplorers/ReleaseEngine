@@ -39,10 +39,8 @@ jobs:
                         pwsh: true
                         azureSubscription: $(serviceConnection)
                         ScriptType: FilePath
-                        # ScriptPath: $(System.ArtifactsDirectory)/artifacts/resources/powershell/controllers/deployBicep.ps1
-                        ScriptPath: $(Pipeline.Workspace)/$(workload)/scripts/${{ script.name }}
+                        ScriptPath: $(Pipeline.Workspace)/$(workload)/scripts/${{ script.name }}.${{ script.scriptExtension }}
                         azurePowerShellVersion: LatestVersion
-                        # ${{ if ne(script.arguments, '') }}:
                         ScriptArguments: ${{ parameters.workloadSettings.deploymentScript.arguments }}
                         workingDirectory: $(Pipeline.Workspace)    
       # jobs:

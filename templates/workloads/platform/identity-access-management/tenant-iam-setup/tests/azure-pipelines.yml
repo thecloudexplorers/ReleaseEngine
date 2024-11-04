@@ -24,7 +24,9 @@ extends:
         - dev
       # - prd
       deploymentScript:
-        - name: Get-EnvironmentVariables.ps1
+        - name: Get-EnvironmentVariables
+          scriptExtension: ps1
           arguments:
-        - name: Get-DirectoryItems.ps1
+        - name: Get-DirectoryItems
+          scriptExtension: ps1
           arguments: -Directory "$(Pipeline.Workspace)"
