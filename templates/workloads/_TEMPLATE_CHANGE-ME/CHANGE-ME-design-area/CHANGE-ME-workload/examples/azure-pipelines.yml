@@ -3,7 +3,7 @@ resources:
   - repository: ReleaseEngine
     type: github
     endpoint: thecloudexplorers
-    name: thecloudexplorers/ReleaseEngine
+    name: thecloudexplorers/release-engine
     ref: users/wcamargo/new-structure
 
 trigger: none
