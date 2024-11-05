@@ -15,7 +15,7 @@ extends:
   template: /pipelines/01-workloads/alz.platform.workload.yml@release-engine
   parameters:
     workloadSettings:
-      configurationFilePath: /templates/workloads/_TEMPLATE_CHANGE-ME/CHANGE-ME-design-area/CHANGE-ME-workload/examples/_config
+      configurationFilePath: /01-templates/workloads/_TEMPLATE_CHANGE-ME/CHANGE-ME-design-area/CHANGE-ME-workload/examples/_config
       environments:
         - dev
       # - prd
