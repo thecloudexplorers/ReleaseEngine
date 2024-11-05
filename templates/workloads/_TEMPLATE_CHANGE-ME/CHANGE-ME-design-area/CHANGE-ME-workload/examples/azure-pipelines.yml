@@ -4,7 +4,7 @@ resources:
     type: github
     endpoint: thecloudexplorers
     name: thecloudexplorers/release-engine
-    ref: users/wcamargo/new-structure
+    ref: users/wcamargo/refatoring-structure
 
 trigger: none
             
